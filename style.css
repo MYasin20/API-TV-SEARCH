@@ -1,0 +1,23 @@
+.card-content {
+  padding: 1.2rem;
+}
+hr {
+  margin-top: 70px;
+}
+
+.pagination {
+  justify-content: center;
+  gap: 50px;
+  margin-block: 30px;
+}
+
+.pagination-list {
+  flex-grow: 0;
+}
+
+
+@media (max-width: 1024px) {
+  #columns-container {
+    padding-inline: 3rem;
+  }
+}

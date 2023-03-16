@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>API PROJECT</title>
+</head>
+<body>
+  <div class="container m-4 mx-auto">
+    <h1 class="title is-1 has-text-centered mb-6 mx-6">TV Shows</h1>
+
+    <div class="columns mx-6">
+
+      <div class="column is-three-fifths is-offset-one-fifth">
+
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <input id="search-input" class="input is-medium" type="text" placeholder="Search TV Shows...">
+          </p>
+
+          <p class="control">
+            <button id="button-submit" class="button is-medium is-info">Search</button>
+          </p>
+        </div>
+
+      </div>
+
+    </div> <!-- end columns -->
+    
+    <!-- PAGINATION -->
+    <nav id="pagination-container" class="pagination is-centered is-hidden" role="navigation" aria-label="pagination">
+      <button class="button pagination-previous" title="Previous Page">Previous</button>
+      <ul class="pagination-list">
+        
+      </ul>
+      <button class="button pagination-next" title="Next Page">Next page</button>
+    </nav>
+
+    <hr class="mx-6">
+
+    <!-- CARD SECTION -->
+    <div class="card-container mx-6">
+      <div id="columns-container" class="columns is-flex-wrap-wrap">
+        
+      </div>
+
+      
+    </div> <!-- card container end -->
+
+    
+  </div> <!-- end container -->
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="index.js"></script>
+      
+</body>
+</html>
