@@ -9,26 +9,23 @@
   <title>API PROJECT</title>
 </head>
 <body>
-  <div class="container m-4 mx-auto">
-    <h1 class="title is-1 has-text-centered mb-6 mx-6">TV Shows</h1>
+  <div class="container">
+    <section class="section">
+      <h1 class="title is-1 has-text-centered mb-6 mx-6">TV Shows</h1>
+      <div class="columns mx-6">
+        <div class="column is-three-fifths is-offset-one-fifth">
+          <div class="field has-addons">
+            <p class="control is-expanded">
+              <input id="search-input" class="input is-medium" type="text" placeholder="Search TV Shows...">
+            </p>
+            <p class="control">
+              <button id="button-submit" class="button is-medium is-info">Search</button>
+            </p>
+          </div>
 
-    <div class="columns mx-6">
-
-      <div class="column is-three-fifths is-offset-one-fifth">
-
-        <div class="field is-grouped">
-          <p class="control is-expanded">
-            <input id="search-input" class="input is-medium" type="text" placeholder="Search TV Shows...">
-          </p>
-
-          <p class="control">
-            <button id="button-submit" class="button is-medium is-info">Search</button>
-          </p>
         </div>
-
-      </div>
-
     </div> <!-- end columns -->
+  </section>
     
     <!-- PAGINATION -->
     <nav id="pagination-container" class="pagination is-centered is-hidden" role="navigation" aria-label="pagination">

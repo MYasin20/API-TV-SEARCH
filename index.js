@@ -65,6 +65,7 @@ const createCard = (imageURL, tvShowName, genre, premiered, tvStatus, origin) =>
 }
 
 const getTvShows = async () => {
+  if(!searchInput.value) return;
   const res = await axios.get(`${base_URL}${searchInput.value}`);
   displayedShows += res.data.length;
   
@@ -133,8 +134,6 @@ const displayPagination = (data) => { // START <<<
   paginationContainer.classList.remove('is-hidden'); // display pagination
   getPaginationNumbers(data);
   setCurrentPage(1);
-
-  
   
   //Add Page Number Buttons Event Listener⬇
   const allPaginationNumber = document.querySelectorAll(".pagination-link");
