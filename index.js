@@ -8,7 +8,7 @@ const paginationNumbers = document.querySelector('.pagination-list');
 
 const base_URL = 'https://api.tvmaze.com/search/shows/?q=';
 
-let displayedShows = 0;
+let tvShowsSearched = 0;
 let paginationLimit = 10;
 let pageCount;
 let currentPage;
@@ -66,33 +66,20 @@ const createCard = (imageURL, tvShowName, genre, premiered, tvStatus, origin) =>
 
 const getTvShows = async () => {
   if(!searchInput.value) return;
-  const res = await axios.get(`${base_URL}${searchInput.value}`);
-  displayedShows += res.data.length;
-  
-  for(let i = 0; i < res.data.length; i++) {
-    let tvImage = res.data[i].show.image;
-    let tvName = res.data[i].show.name;
-    let tvGenre = res.data[i].show.genres.join(', ');
-    let tvPremiered = res.data[i].show.premiered;
-    let tvStatus = res.data[i].show.status;
-    let tvOrigin = res.data[i].show.network;
-    if (tvImage === null) {
-       tvImage = 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png';
-    } else {
-      tvImage = tvImage.original;
-    }
-    if(tvGenre.length === 0) tvGenre = 'Not Available';
-    if(tvPremiered === null) tvPremiered = 'Not Available';
-    if(tvStatus === null) tvStatus = 'Not Available';
-    if(tvOrigin === null) {
-      tvOrigin = 'Not Available';
-    } else {
-      tvOrigin = tvOrigin.country.name;
-    }
-    createCard(tvImage, tvName, tvGenre, tvPremiered, tvStatus, tvOrigin);
+  const { data } = await axios.get(`${base_URL}${searchInput.value}`);
+  tvShowsSearched += data.length;
+  for(let i = 0; i < data.length; i++) {
+    const { show } = data[i];
+    const { image, name, genres, premiered, status, origin } = show;
+    const showImage = image ? image.original : 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png';
+    const showGenre = genres.length ? genres.join(', ') : 'Not Available';
+    const tvPremiered = premiered || 'Not Available';
+    const tvStatus = status || 'Not Available';
+    const tvOrigin = origin ? origin.country.name : 'Not Available';
+    createCard(showImage, name, showGenre, tvPremiered, tvStatus, tvOrigin);
   }
-  if(displayedShows > 10) {
-    displayPagination(displayedShows);
+  if(tvShowsSearched > 10) {
+    displayPagination(tvShowsSearched);
   }
   searchInput.value = ''
 }
